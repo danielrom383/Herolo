@@ -1,0 +1,53 @@
+<!--search form-->
+<div  style="text-align: center; margin: auto; margin-bottom: 4%;margin-top: 4%; max-width: 220px;">
+        <input placeholder="search city..."  tabindex="-1" type="text" (keyup)="autoComplete()" (keyup)="isCityClicked = false" [(ngModel)]="searchInput">
+        <div *ngIf="!isCityClicked"> 
+        <div  *ngFor="let search of autoCompleteResult" >
+                
+             <button class="btn btn" (click)="getMultipleDailyForecast('5day' , search.Key)" (click)="cityKey = search.Key"  (click)="searchInput = search.LocalizedName" (click)="selectedCity = search" (click)="cityName = search.LocalizedName" (click)="isCityClicked = true">{{search.LocalizedName}}</button>
+         </div >
+     </div>
+ </div>
+<div style="margin-bottom: 10%;"  id="pageContainer" >
+    
+       
+    <div style="margin-left: 5%;margin-right: 5%; margin-top: 5%; margin-bottom:5%; font-size:25px">
+<div class="d-flex bd-highlight">
+    <!--current forecast-->
+        <div class="p-2 flex-grow-1 bd-highlight" style="max-width: 80px;">
+            <img style="height: 80px;width: 80px;"src="https://www.accuweather.com/images/weathericons/{{multipleForecasts.DailyForecasts[0].Day.Icon}}.svg" alt="">
+        </div>
+        <div class="p-2 flex-grow-1 bd-highlight" style="margin-left: 1%;" >{{selectedCity.LocalizedName}} <br>{{multipleForecasts.DailyForecasts[0].Temperature.Maximum.Value.toFixed()}}&#176;</div> 
+        <div class="p-grid p-justify-end" >
+            <!--favorite button-->    
+            <div>
+                    <button class="btn btn" *ngIf="!isFavorite" type="button" (click)="addFavorite()" ><i class="material-icons icon-image-preview" style="font-size: 40px;">favorite_border</i></button>
+                    <button class="btn btn" *ngIf="isFavorite" type="button" (click)="removeFavorite()"><i class="material-icons icon-image-preview" style="font-size: 40px;" >favorite</i></button>
+                </div>
+            </div>
+    </div>
+        
+
+    <div style="margin-right: 5%; margin-left: 5%;margin-top:10%">
+        <!--forecast next 5 days-->
+                <div class="card-deck mb-3 text-center" *ngIf="this.multipleForecasts.DailyForecasts != undefined" >
+                <div style="margin: auto;" *ngFor="let forecast of multipleForecasts.DailyForecasts">
+                  
+                  <div class="card mb-4 shadow-sm" style="font-size:27px; min-width: 150px;">
+                    
+                 {{forecast.Date | date: "EEEE"}}
+                 <br>
+                 <br>
+                 <img style="height: 80px;width: 80px; margin: auto" src="https://www.accuweather.com/images/weathericons/{{forecast.Day.Icon}}.svg" alt="">
+                    <br>
+                  {{forecast.Temperature.Maximum.Value.toFixed()  }}&#176;
+                  </div>
+                </div>
+            </div> 
+        </div>
+               
+    </div>
+</div>
+
+
+

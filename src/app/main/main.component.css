@@ -1,0 +1,15 @@
+#pageContainer { 
+    border: 1px solid black;
+    background-image: url('https://i.makeagif.com/media/9-16-2015/k4cVEi.gif');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+button.isFavorite{
+    background-image : url("https://cdn.dribbble.com/users/26878/screenshots/3520598/02_-_favorite.gif");
+    background-color: solid; 
+    background-repeat: repeat;
+}
