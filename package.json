@@ -1,6 +1,9 @@
 {
   "homepage": "https://danielrom383.github.io/Daniel-Rom-01-11-2019",
   "name": "weather-ui",
+  "engines": {
+    "node": "12.13.0"
+  }
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
